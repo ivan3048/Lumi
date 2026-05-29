@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lumi - Librería</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+
+        /* Header */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 8%; background: #f2f0eb; 
+        }
+        .logo { font-weight: bold; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+        .nav-menu { display: flex; gap: 20px; align-items: center; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        /* Hero Section */
+        .hero { 
+            height: 60vh; background: #333; color: white; 
+            display: flex; flex-direction: column; justify-content: center; 
+            padding: 0 8%; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('fondo.jpeg'); /* Reemplaza con tu imagen */
+            background-size: cover; background-position: center;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: #e67e22; }
+        .hero p { font-size: 1.1rem; margin-bottom: 30px; max-width: 500px; }
+        .btn-explorar { 
+            background: white; color: black; padding: 15px 30px; 
+            border: none; border-radius: 50px; cursor: pointer; font-weight: bold; width: fit-content;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">✦ Lumi</div>
+    <nav class="nav-menu">
+        <a href="index.html" class="nav-link">INCIO</a>
+        <a href="carrito.html" class="nav-link">Carrito</a>
+       
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Descubre tu próxima historia favorita</h1>
+    <p>Encuentra títulos seleccionados y variados perfectos para conectar con cada uno de tus gustos e intereses. Tu próxima gran lectura empieza aquí.</p>
+    <button class="btn-explorar">Explorar catálogo completo</button>
+</section>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Promoción Lumi</title>
+    <style>
+    .lumi-carousel {
+        position: relative;
+        max-width: 1000px;
+        margin: 40px auto;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+        min-width: 100%;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        display: block;
+        height: 400px; /* Ajusta según la altura deseada */
+        object-fit: cover;
+    }
+
+    /* Botones de navegación */
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.8);
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+    .prev { left: 20px; }
+    .next { right: 20px; }
+
+    /* Indicadores inferiores */
+    .indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+    }
+    .dot {
+        width: 12px;
+        height: 12px;
+        background: rgba(255,255,255,0.5);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .dot.active { background: white; }
+</style>
+
+<<div class="lumi-carousel">
+    <div class="carousel-inner" id="inner">
+        <!-- Imagen 1 -->
+        <div class="carousel-item">
+            <a href="categoria.html">
+                <img src="carr1.png" alt="Promo 1">
+            </a>
+        </div>
+        <!-- Imagen 2 -->
+        <div class="carousel-item">
+            <a href="categoria2.html">
+                <img src="carr2.png" alt="Promo 2">
+            </a>
+        </div>
+    </div>
+    
+    <!-- Botones de navegación -->
+    <button class="nav-btn prev" onclick="move(-1)">❮</button>
+    <button class="nav-btn next" onclick="move(1)">❯</button>
+
+    <!-- Indicadores (ajustados a 2) -->
+    <div class="indicators">
+        <div class="dot active" onclick="goTo(0)"></div>
+        <div class="dot" onclick="goTo(1)"></div>
+    </div>
+</div>
+
+<script>
+    let index = 0;
+    function move(step) {
+        index = (index + step + 3) % 3;
+        update();
+    }
+    function goTo(n) { index = n; update(); }
+    function update() {
+        document.getElementById('inner').style.transform = `translateX(-${index * 100}%)`;
+        document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+</script>
+    <style>
+        /* Variables de diseño de la marca (Tonos crema, terracota y oscuros elegantes) */
+        :root {
+            --bg-cream: #f4efe9;
+            --text-dark: #1c1a17;
+            --accent-terracotta: #bd5b38;
+            --accent-hover: #a1492b;
+            --card-dark: #1e1e1e;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #faf8f5;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* Contenedor Principal Hero */
+        .hero-section {
+            background-color: var(--bg-cream);
+            min-height: 550px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: table; /* Estructura limpia y alineada verticalmente */
+        }
+
+        .hero-column-left {
+            display: table-cell;
+            vertical-align: middle;
+            width: 55%;
+            padding-right: 40px;
+        }
+
+        .hero-column-right {
+            display: table-cell;
+            vertical-align: middle;
+            width: 45%;
+            text-align: center;
+        }
+
+        /* Elementos de Texto */
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--accent-terracotta);
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #59534c;
+            margin-bottom: 36px;
+            max-width: 540px;
+        }
+
+        .hero-description strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Botón de Acción (CTA) */
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--accent-terracotta);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 36px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(189, 91, 56, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(189, 91, 56, 0.4);
+        }
+
+        .hero-footer-tag {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: #a69f95;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contenedor Visual de la Tarjeta */
+        .visual-container {
+            position: relative;
+            display: inline-block;
+            padding: 20px;
+        }
+
+        /* Insignia Flotante (40% OFF) */
+        .badge-discount {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background-color: #d9a752;
+            color: #ffffff;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            transform: rotate(12deg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 10;
+            border: 2px dashed rgba(255,255,255,0.4);
+        }
+
+        .badge-discount .pct {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .badge-discount .txt {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Tarjeta Física/Digital Lumi Estilizada */
+        .lumi-card {
+            background: linear-gradient(135deg, #2c2925 0%, #141311 100%);
+            width: 360px;
+            height: 220px;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            color: #ffffff;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .lumi-card:hover {
+            transform: translateY(-5px) rotate(-1deg);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.35);
+        }
+
+        .card-logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #f4efe9;
+            margin-bottom: 30px;
+        }
+
+        .card-logo span {
+            font-weight: 700;
+            color: #d9a752;
+        }
+
+        /* Círculos de Progreso Internos */
+        .card-progress {
+            display: flex;
+            justify-content: flex-start;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .progress-dot {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid rgba(244, 239, 233, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba(244, 239, 233, 0.6);
+        }
+
+        .progress-dot.active {
+            border-color: #d9a752;
+            background-color: rgba(217, 167, 82, 0.1);
+            color: #d9a752;
+        }
+
+        .progress-dot.reward {
+            border-color: var(--accent-terracotta);
+            background-color: var(--accent-terracotta);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .card-footer {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: rgba(244, 239, 233, 0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Optimización Móvil / Responsive */
+        @media (max-width: 768px) {
+            .hero-container, .hero-column-left, .hero-column-right {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding-right: 0;
+            }
+            .hero-column-right {
+                margin-top: 50px;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-description {
+                margin: 0 auto 24px auto;
+            }
+        }
+    </style>
+
+
+
+    <section class="hero-section">
+        <div class="hero-container">
+            
+            <div class="hero-column-left">
+                <span class="hero-tag">Sistema de Recompensa</span>
+                <h1 class="hero-title">El camino a tus lecturas premiadas.</h1>
+                <p class="hero-description">
+                    Con tu <strong>Tarjeta Lumi</strong>, cada 3 libros que compres con nosotros, recibes un <strong>40% de descuento</strong> directo aplicado en tu siguiente libro.
+                </p>
+                <a href="wa.me/4492906699" class="btn-cta">Solicita Tu Tarjeta Gratis</a>
+                <div class="hero-footer-tag">Desde tu primera compra</div>
+            </div>
+            
+            <div class="hero-column-right">
+                <div class="visual-container">
+                    
+                    <div class="badge-discount">
+                        <span class="pct">40%</span>
+                        <span class="txt">Off</span>
+                    </div>
+                    
+                    <div class="lumi-card">
+                        <div class="card-logo">LU<span>M</span>I</div>
+                        
+                        <div class="card-progress">
+                            <div class="progress-dot active">1</div>
+                            <div class="progress-dot active">2</div>
+                            <div class="progress-dot active">3</div>
+                            <div class="progress-dot reward">%</div>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <span>Tarjeta de Lectura</span>
+                            <span>Lumi Reader</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <style>
+    .productos-grid {
+        display: grid;
+        /* Esto crea una fila de hasta 4 columnas automáticamente */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 50px 8%;
+    }
+    .producto-card {
+        border: 1px solid #eee;
+        padding: 15px;
+        text-align: center;
+        background: #fff;
+        border-radius: 8px;
+    }
+    .producto-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px; border-radius: 4px; }
+    .btn-add {
+        background: #d45c37;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+<style>
+    .productos-grid {
+        display: grid;
+        /* repeat(4, 1fr) fuerza a que siempre sean 4 columnas de igual tamaño */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 20px;
+        padding: 50px 8%;
+    }
+
+    /* Ajuste para pantallas pequeñas (tablets y móviles) */
+    @media (max-width: 1024px) {
+        .productos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+        .productos-grid { grid-template-columns: 1fr; }
+    }
+
+    .producto-card {
+        border: 1px solid #eee;
+        padding: 15px;
+        text-align: center;
+        background: #fff;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+    .producto-card img { 
+        width: 100%; 
+        height: 250px; 
+        object-fit: cover; 
+        margin-bottom: 10px; 
+        border-radius: 4px; 
+    }
+    .btn-ver {
+        background: #a05a41;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: auto;
+    }
+</style>
+
+<div class="productos-grid">
+    <div class="producto-card">
+        <img src="jurassic.jpeg" alt="Libro">
+        <h3>Jurassic Park</h3>
+        <p>$220.00</p>
+        <a href="producto1.html" class="btn-ver">Ver producto</a>
+    </div>
+    
+    <div class="producto-card">
+        <img src="slclc.jpeg" alt="Libro">
+        <h3>Si lo crees lo creas</h3>
+        <p>$180.00</p>
+        <a href="producto2.html" class="btn-ver">Ver producto</a>
+    </div>
+
+    <div class="producto-card">
+        <img src="lmqd.jpeg" alt="Libro">
+        <h3>Las mujeres que aman...</h3>
+        <p>$180.00</p>
+        <a href="producto3.html" class="btn-ver">Ver producto</a>
+    </div>
+
+    <div class="producto-card">
+        <img src="querida.jpeg" alt="Libro">
+        <h3>Querida yo: tenemos que...</h3>
+        <p>$180.00</p>
+        <a href="producto4.html" class="btn-ver">Ver producto</a>
+    </div>
+</div>
+<script>
+    function agregarAlCarrito(nombre, precio) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        alert(nombre + " ha sido añadido al carrito.");
+    }
+</script>
+
+<style>
+    .seccion-titulo {
+        text-align: center;
+        padding: 40px 0 20px 0;
+        font-size: 1.8rem;
+        color: #333;
+        font-weight: bold;
+    }
+</style>
+
+<<style>
+    .productos-grid {
+        display: grid;
+        /* Define 4 columnas fijas para escritorio */
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 40px 8%;
+    }
+
+    /* Adaptación responsive para tablets y móviles */
+    @media (max-width: 1024px) { .productos-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .productos-grid { grid-template-columns: 1fr; } }
+
+    .producto-card {
+        border: 1px solid #eee;
+        padding: 15px;
+        text-align: center;
+        background: #fff;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s;
+    }
+    .producto-card:hover { transform: translateY(-5px); }
+    
+    .producto-card img { 
+        width: 100%; 
+        height: 250px; 
+        object-fit: cover; 
+        margin-bottom: 10px; 
+        border-radius: 4px; 
+    }
+    
+    .btn-ver {
+        background-color: #a05a41;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: auto;
+        display: block;
+    }
+</style>
+
+<div class="productos-grid">
+    <div class="producto-card">
+        <img src="cuidate.jpeg" alt="Cuídate para crecer">
+        <h3>Cuídate para crecer – Ana Pérez</h3>
+        <p>$180.00</p>
+        <a href="producto5.html" class="btn-ver">Ver producto</a>
+    </div>
+
+    <div class="producto-card">
+        <img src="placebo.jpeg" alt="El placebo eres tú">
+        <h3>El placebo eres tú – Joe Dispenza</h3>
+        <p>$190.00</p>
+        <a href="producto6.html" class="btn-ver">Ver producto</a>
+    </div>
+
+    <div class="producto-card">
+        <img src="ahora.jpeg" alt="El poder del ahora">
+        <h3>El poder del ahora – Eckhart Tolle</h3>
+        <p>$180.00</p>
+        <a href="producto7.html" class="btn-ver">Ver producto</a>
+    </div>
+
+    <div class="producto-card">
+        <img src="teoria.jpeg" alt="La teoría Let Them">
+        <h3>La teoría Let Them – Mel Robbins</h3>
+        <p>$180.00</p>
+        <a href="producto8.html" class="btn-ver">Ver producto</a>
+    </div>
+</div>
+</div>
+<style>
+    /* Contenedor principal del footer */
+    .footer-custom-container {
+        background-color: #a05a41; 
+        padding: 40px 5%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    /* Estilo base para cada tarjeta */
+    .footer-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        width: 100%;
+        max-width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .card-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    /* Botones de acción */
+    .btn-footer {
+        background-color: #1c1a17;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    /* Estilo específico para el nuevo botón */
+    .btn-story { background-color: #d35400; } 
+
+    /* Estilo para el enlace de colaboradores */
+    .link-colaboradores {
+        color: #a05a41;
+        text-decoration: underline;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .btn-whatsapp { background-color: #25d366; color: white; }
+    .btn-instagram { background-color: #e1306c; color: white; }
+
+    .horario-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+</style>
+
+<footer class="footer-custom-container">
+    <div class="footer-card">
+        <div class="card-title">📍 Puntos de Entrega</div>
+        <p style="font-size: 0.9rem; color: #6e675f;">Consulta en el mapa nuestras zonas y horarios disponibles para recoger tus libros.</p>
+        <a href="https://maps.app.goo.gl/dcQLd8BvRzjVJbkaA?g_st=ac" class="btn-footer">Ver en Google Maps →</a>
+    </div>
+
+    <div class="footer-card">
+        <div class="card-title">🕒 Horario de Atención</div>
+        <div class="horario-row"><span>Lunes a Viernes</span> <span>5:00 pm – 10:00 pm</span></div>
+        <div class="horario-row"><span>Sábado a Domingo</span> <span>2:00 pm – 10:00 pm</span></div>
+    </div>
+
+    <div class="footer-card">
+        <div class="card-title">👥 Síguenos y Escríbenos</div>
+        <a href="https://wa.me/4497411545" class="btn-footer btn-whatsapp">WhatsApp</a>
+        <a href="https://www.instagram.com/lumilibros.mx?igsh=a2IybjJmZGxvY3Jv" class="btn-footer btn-instagram">Instagram</a>
+    </div>
+
+    <!-- Nueva tarjeta añadida -->
+    <div class="footer-card">
+        <div class="card-title">✨ Sobre Lumi</div>
+        <a href="https://youtube.com/shorts/JKmDFcRutoo?si=3eARbLVBlr-UNNis" class="btn-footer btn-story">Storytelling</a>
+        <a href="colaboradores.html" class="link-colaboradores">Colaboradores</a>
+    </div>
+</footer>
+</body>
+</html>
