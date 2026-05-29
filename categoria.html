@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda - Lumi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 8%; background: #f2f0eb; 
+        }
+        .logo { font-weight: bold; font-size: 1.8rem; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        .shop-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+            gap: 30px; 
+        }
+        
+        .product-card { border: 1px solid #eee; padding: 15px; text-align: center; border-radius: 8px; }
+        .product-card img { width: 100%; height: 280px; object-fit: cover; margin-bottom: 10px; }
+        .product-card h3 { font-size: 1rem; margin-bottom: 5px; }
+        .price { color: #555; margin-bottom: 15px; display: block; }
+        
+        /* Estilo para que el enlace parezca botón */
+        .btn-view { 
+            display: block;
+            background: #a05a41; 
+            color: white; 
+            text-decoration: none;
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">✦ Lumi</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">INICIO</a>
+
+            <a href="carrito.html" class="nav-link">CARRITO</a>
+        </nav>
+    </header>
+
+    <div class="shop-container">
+        <h2 style="margin-bottom: 30px;">Catálogo de Libros</h2>
+        <div class="product-grid">
+            <!-- Referencia: image_2b1c5a.jpg -->
+            
+            <div class="product-card">
+                <img src="portales.jpg" alt="portales.jpg">
+                <h3>El libro de los Portales</h3>
+                <span class="price">$180.00</span>
+                <a href="planeta1.html" class="btn-view">Ver producto</a>
+            </div>
+
+            <div class="product-card">
+                <img src="broma.jpg" alt="Broma">
+                <h3>La Broma</h3>
+                <span class="price">$200.00</span>
+                <a href="planeta3.html" class="btn-view">Ver producto</a>
+            </div>
+
+            <div class="product-card">
+                <img src="ideas.png" alt="ideas en venta">
+                <h3>ideas en venta</h3>
+                <span class="price">$200.00</span>
+                <a href="planeta2.html" class="btn-view">Ver producto</a>
+            </div>
+
+            <div class="product-card">
+                <img src="quijote.png" alt="quijote – Salman Rushdie">
+                <h3>quijote – Salman Rushdie</h3>
+                <span class="price">$180.00</span>
+                <a href="planeta4.html" class="btn-view">Ver producto</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

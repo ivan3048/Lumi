@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito - Lumi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+        /* Header (El que solicitaste mantener) */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 8%; background: #f2f0eb; 
+        }
+        .logo { font-weight: bold; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+        .nav-menu { display: flex; gap: 20px; align-items: center; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        /* Estilo Carrito */
+        .carrito-page { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        h1 { margin-bottom: 20px; color: #1c1a17; }
+        
+        .carrito-container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+        .item-carrito { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #f4f1ed; }
+        
+        .info-producto h3 { font-size: 1.1rem; }
+        .info-producto p { color: #6e675f; font-size: 0.9rem; }
+        
+        .btn-eliminar { color: #bd5b38; cursor: pointer; border: none; background: none; font-weight: 600; }
+        
+        .resumen-total { text-align: right; margin-top: 30px; font-size: 1.2rem; font-weight: bold; }
+        .btn-pagar { 
+            display: block; width: 100%; max-width: 300px; margin: 20px 0 0 auto;
+            background-color: #bd5b38; color: white; padding: 15px; border-radius: 50px; 
+            text-align: center; text-decoration: none; font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">✦ Lumi</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">INICIO</a>
+            <a href="carrito.html" class="nav-link">Carrito</a>
+           
+        </nav>
+    </header>
+
+    <main class="carrito-page">
+        <h1>Tu Carrito</h1>
+        <div class="carrito-container" id="lista-carrito">
+            </div>
+        <div class="resumen-total" id="total-final">
+            Total: $0.00
+        </div>
+        <a href="#" class="btn-pagar" onclick="alert('Redirigiendo a pago...')">Proceder al pago</a>
+    </main>
+
+    <script>
+        function cargarCarrito() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let lista = document.getElementById('lista-carrito');
+            let total = 0;
+            lista.innerHTML = '';
+
+            if (carrito.length === 0) {
+                lista.innerHTML = '<p>Tu carrito está vacío.</p>';
+            } else {
+                carrito.forEach((producto, index) => {
+                    total += producto.precio;
+                    lista.innerHTML += `
+                        <div class="item-carrito">
+                            <div class="info-producto">
+                                <h3>${producto.nombre}</h3>
+                                <p>$${producto.precio.toFixed(2)}</p>
+                            </div>
+                            <button class="btn-eliminar" onclick="eliminar(${index})">Eliminar</button>
+                        </div>
+                    `;
+                });
+            }
+            document.getElementById('total-final').innerText = 'Total: $' + total.toFixed(2);
+        }
+
+        function eliminar(index) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.splice(index, 1);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            cargarCarrito();
+        }
+
+        window.onload = cargarCarrito;
+    </script>
+    <div id="lista-carrito"></div>
+
+<script>
+    function cargarCarrito() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let contenedor = document.getElementById('lista-carrito');
+        let total = 0;
+        
+        contenedor.innerHTML = ''; // Limpiar antes de dibujar
+
+        if (carrito.length === 0) {
+            contenedor.innerHTML = '<p>Tu carrito está vacío.</p>';
+        } else {
+            carrito.forEach((prod, index) => {
+                total += prod.precio;
+                contenedor.innerHTML += `
+                    <div class="item-carrito">
+                        <span>${prod.nombre}</span>
+                        <span>$${prod.precio.toFixed(2)}</span>
+                        <button onclick="eliminarProducto(${index})">Quitar</button>
+                    </div>
+                `;
+            });
+            // Opcional: mostrar total
+            contenedor.innerHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
+        }
+    }
+
+    function eliminarProducto(index) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.splice(index, 1);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        cargarCarrito(); // Recarga la vista
+    }
+
+    // Ejecutar al cargar la página
+    window.onload = cargarCarrito;
+</script>
+</body>
+</html>
