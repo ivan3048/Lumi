@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>El poder del ahora - Lumi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+
+        /* Header Lumi */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 8%; background: #f2f0eb; 
+        }
+        .logo { font-weight: bold; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+        .nav-menu { display: flex; gap: 20px; align-items: center; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        /* Estilos de página de producto */
+        .product-page { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        
+        .img-box img { width: 100%; border-radius: 8px; border: 1px solid #eee; }
+        .thumbnails { display: flex; gap: 10px; margin-top: 10px; }
+        .thumbnails img { width: 60px; height: 60px; object-fit: cover; cursor: pointer; border: 1px solid #ddd; }
+
+        .info-box h1 { font-size: 2rem; margin-bottom: 10px; }
+        .price { font-size: 1.4rem; color: #333; margin-bottom: 15px; }
+        .add-cart { display: flex; gap: 15px; margin-top: 20px; align-items: center; }
+        .qty { width: 50px; padding: 8px; border: 1px solid #ccc; }
+        .btn-add { background: #a05a41; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        
+        .tabs { border-bottom: 1px solid #ccc; margin-bottom: 20px; display: flex; gap: 20px; }
+        .tab-item { padding-bottom: 10px; cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab-active { border-bottom-color: #a05a41; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">✦ Lumi</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">INICIO</a>
+            
+            <a href="carrito.html" class="nav-link">CARRITO</a>
+        </nav>
+    </header>
+
+    <div class="product-page">
+        <div class="main-grid">
+            <div class="img-box">
+                <!-- Referencia: image_2bf633.png -->
+                <img src="ahora.jpeg" alt="El poder del ahora">
+                <div class="thumbnails">
+                   
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h1>El poder del ahora – Eckhart Tolle</h1>
+                <p class="price">$180.00</p>
+                <p>Encuentra la paz mental y la realización espiritual conectando con el presente. El bestseller mundial de Eckhart Tolle, nuevo en Lumi.</p>
+                
+                <div class="add-cart">
+                    <input type="number" value="1" id="qty" class="qty">
+                    <button class="btn-add" onclick="agregarAlCarrito('El poder del ahora', 180.00)">Añadir al carrito</button>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.9rem;">Categoría: <b>superacion personal</b></p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab-item tab-active">Descripción</div>
+            <div class="tab-item">Valoraciones (0)</div>
+        </div>
+        
+        <div class="description-content">
+            <h3>Descripción</h3>
+            <p style="line-height: 1.6; margin-top: 10px;">
+                <b>Sinopsis:</b> Considerado uno de los libros espirituales más importantes de nuestra época, <i>El Poder del Ahora</i> es un viaje transformador diseñado para enseñarnos a dejar atrás el sufrimiento, la ansiedad y las cadenas del pasado o el futuro. <b>Eckhart Tolle</b> nos guía a través de un lenguaje claro y accesible, demostrando que la mente a menudo se convierte en nuestra propia trampa y que la única vía hacia la verdadera felicidad y la paz interior es aprender a vivir plenamente en el momento presente. 
+                Con más de 4 millones de ejemplares vendidos en todo el mundo, esta obra maestra de la literatura de bienestar y espiritualidad ofrece herramientas prácticas para silenciar el ruido mental y conectar con nuestra esencia más profunda.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function agregarAlCarrito(nombre, precio) {
+            let qty = parseInt(document.getElementById('qty').value);
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            for(let i = 0; i < qty; i++) {
+                carrito.push({ nombre: nombre, precio: precio });
+            }
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            alert(nombre + " añadido al carrito.");
+        }
+    </script>
+
+</body>
+</html>
