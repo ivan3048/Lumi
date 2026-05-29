@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>El Libro de los Portales - Lumi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+
+        /* Header Lumi */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 8%; background: #f2f0eb; 
+        }
+        .logo { font-weight: bold; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+        .nav-menu { display: flex; gap: 20px; align-items: center; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        /* Estilos de página de producto */
+        .product-page { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        
+        .img-box img { width: 100%; border-radius: 8px; border: 1px solid #eee; }
+        .thumbnails { display: flex; gap: 10px; margin-top: 10px; }
+        .thumbnails img { width: 60px; height: 60px; object-fit: cover; cursor: pointer; border: 1px solid #ddd; }
+
+        .info-box h1 { font-size: 2rem; margin-bottom: 10px; }
+        .price { font-size: 1.4rem; color: #333; margin-bottom: 15px; }
+        .add-cart { display: flex; gap: 15px; margin-top: 20px; align-items: center; }
+        .qty { width: 50px; padding: 8px; border: 1px solid #ccc; }
+        .btn-add { background: #a05a41; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        
+        .tabs { border-bottom: 1px solid #ccc; margin-bottom: 20px; display: flex; gap: 20px; }
+        .tab-item { padding-bottom: 10px; cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab-active { border-bottom-color: #a05a41; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">✦ Lumi</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">INICIO</a>
+            
+            <a href="carrito.html" class="nav-link">CARRITO</a>
+        </nav>
+    </header>
+
+    <div class="product-page">
+        <div class="main-grid">
+            <div class="img-box">
+                <!-- Referencia: image_2b9fdc.jpg -->
+                <img src="ideas.png" alt="El Libro de los Portales">
+                <div class="thumbnails">
+                   
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h1>Ideas en venta – Jorge Ibargüengoitia</h1>
+                <p class="price">$200.00</p>
+                <p>
+Con ironía y ágil pluma, Jorge Ibargüengoitia trata en estas páginas asuntos que van desde los placeres individuales la escritura, los viajes y la pasión por el cine hasta las preocupaciones sociales la corrupción, el caos urbano, la llegada del hombre a la Luna, sin perder nunca su visión sarcástica de la vida.
+
+Obra de uno de los más grandes escritores de Hispanoamérica, Ideas en venta reúne más de un centenar de artículos periodísticos y conforma un grandioso mosaico de la vida en México durante los años setenta.</p>
+                
+                <div class="add-cart">
+                    <input type="number" value="1" id="qty" class="qty">
+                    <button class="btn-add" onclick="agregarAlCarrito('El Libro de los Portales', 180.00)">Añadir al carrito</button>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.9rem;">Categoría: <b>superacion personal</b></p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab-item tab-active">Descripción</div>
+            <div class="tab-item">Valoraciones (0)</div>
+        </div>
+        
+        <div class="description-content">
+            <h3>Descripción</h3>
+            <p style="line-height: 1.6; margin-top: 10px;">
+                <b>Sinopsis:Con ironía y ágil pluma, Jorge Ibargüengoitia trata en estas páginas asuntos que van desde los placeres individuales la escritura, los viajes y la pasión por el cine hasta las preocupaciones sociales la corrupción, el caos urbano, la llegada del hombre a la Luna, sin perder nunca su visión sarcástica de la vida.
+
+Obra de uno de los más grandes escritores de Hispanoamérica, Ideas en venta reúne más de un centenar de artículos periodísticos y conforma un grandioso mosaico de la vida en México durante los años setenta.</b> .
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function agregarAlCarrito(nombre, precio) {
+            let qty = parseInt(document.getElementById('qty').value);
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            for(let i = 0; i < qty; i++) {
+                carrito.push({ nombre: nombre, precio: precio });
+            }
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            alert(nombre + " añadido al carrito.");
+        }
+    </script>
+
+</body>
+</html>
